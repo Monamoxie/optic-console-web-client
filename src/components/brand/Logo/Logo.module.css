@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--logo-bg);
+  border-radius: var(--radius-lg);
+  color: var(--logo-icon);
+  margin-bottom: 1rem;
+}
+
+.sm {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.md {
+  width: 3rem;
+  height: 3rem;
+}
+
+.lg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.svg {
+  width: 50%;
+  height: 50%;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
