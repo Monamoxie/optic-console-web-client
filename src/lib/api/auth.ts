@@ -25,10 +25,8 @@ export interface LoginResponse {
 }
 
 export interface SignupRequest {
-  fullName: string;
   email: string;
   password: string;
-  organizationName: string;
 }
 
 export interface SignupResponse {
@@ -42,7 +40,8 @@ export interface ForgotPasswordRequest {
 
 export interface ResetPasswordRequest {
   token: string;
-  password: string;
+  newPassword: string;
+  newPasswordConfirmation: string;
 }
 
 // API Functions
@@ -66,6 +65,20 @@ export const authApi = {
    */
   forgotPassword: async (data: ForgotPasswordRequest): Promise<void> => {
     return apiClient.post("/api/v1/auth/forgot-password", data);
+  },
+
+  /**
+   * Verify reset password token (GET). Use before showing the reset form.
+   */
+  verifyResetPasswordToken: async (token: string): Promise<void> => {
+    return apiClient.get("/api/v1/auth/reset-password", { params: { token } });
+  },
+
+  /**
+   * Verify email verification token (POST). Use to verify user's email after signup.
+   */
+  verifyEmailToken: async (token: string): Promise<void> => {
+    return apiClient.post("/api/v1/auth/verification/email", { token });
   },
 
   /**
