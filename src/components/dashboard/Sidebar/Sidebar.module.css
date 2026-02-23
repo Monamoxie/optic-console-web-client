@@ -1,0 +1,332 @@
+.sidebar {
+  width: 16rem;
+  height: 100vh;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+}
+
+/* Logo */
+.logoSection {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Project Selector */
+.projectSection {
+  padding: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+}
+
+.projectButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.projectButton:hover {
+  background-color: var(--neutral-100);
+}
+
+[data-theme="dark"] .projectButton:hover {
+  background-color: var(--neutral-800);
+}
+
+.projectIcon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.projectName {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Dropdown Menus */
+.projectMenu,
+.userMenu {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  padding: 0.25rem 0;
+}
+
+.projectMenu {
+  top: calc(100% - 0.5rem);
+}
+
+.userMenu {
+  bottom: calc(100% + 0.25rem);
+}
+
+.menuLabel {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.menuItem:hover {
+  background-color: var(--neutral-100);
+}
+
+[data-theme="dark"] .menuItem:hover {
+  background-color: var(--neutral-800);
+}
+
+.menuItemIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.menuDivider {
+  height: 1px;
+  margin: 0.25rem 0;
+  background-color: var(--card-border);
+}
+
+/* Navigation */
+.nav {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navItem,
+.navGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.navItem:hover,
+.navGroupHeader:hover {
+  background-color: var(--neutral-100);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .navItem:hover,
+[data-theme="dark"] .navGroupHeader:hover {
+  background-color: var(--neutral-800);
+}
+
+.navItem.active {
+  background-color: var(--blue-50);
+  color: var(--blue-700);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .navItem.active {
+  background-color: var(--blue-900);
+  color: var(--blue-300);
+}
+
+.navIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.chevronSmall {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: auto;
+  color: var(--text-tertiary);
+  transition: transform var(--transition);
+}
+
+.chevronSmall.expanded {
+  transform: rotate(180deg);
+}
+
+/* Sub Navigation */
+.navGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.navSubList {
+  list-style: none;
+  margin: 0.25rem 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.navSubItem {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.navSubItem:hover {
+  background-color: var(--neutral-100);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .navSubItem:hover {
+  background-color: var(--neutral-800);
+}
+
+.navSubItem.active {
+  background-color: var(--blue-50);
+  color: var(--blue-700);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .navSubItem.active {
+  background-color: var(--blue-900);
+  color: var(--blue-300);
+}
+
+/* User Section */
+.userSection {
+  padding: 1rem;
+  border-top: 1px solid var(--card-border);
+  position: relative;
+}
+
+.userButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.userButton:hover {
+  background-color: var(--neutral-100);
+}
+
+[data-theme="dark"] .userButton:hover {
+  background-color: var(--neutral-800);
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--neutral-200);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .avatar {
+  background-color: var(--neutral-700);
+}
+
+.avatarIcon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--text-secondary);
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
