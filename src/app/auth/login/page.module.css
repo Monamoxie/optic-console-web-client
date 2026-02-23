@@ -1,0 +1,97 @@
+.container {
+  width: 100%;
+}
+
+/* Branding */
+.branding {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+}
+
+/* Error */
+.error {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--red-600);
+  background-color: var(--red-50);
+  border: 1px solid var(--red-100);
+  border-radius: var(--radius-md);
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  font-size: 0.875rem;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--link-hover);
+}
+
+/* Switch */
+.switch {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.switchLink {
+  color: var(--link-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.switchLink:hover {
+  color: var(--link-hover);
+}
+
+/* Footer */
+.footer {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: 2rem;
+}

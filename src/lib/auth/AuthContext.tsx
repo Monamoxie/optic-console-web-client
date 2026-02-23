@@ -8,7 +8,6 @@ import {
   useCallback,
   useMemo,
 } from "react";
-import { useRouter } from "next/navigation";
 import {
   authApi,
   ApiError,
@@ -82,7 +81,6 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const router = useRouter();
   const [state, setState] = useState<AuthState>({
     user: null,
     isAuthenticated: false,
@@ -147,8 +145,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       isLoading: false,
     });
 
-    router.push("/dashboard");
-  }, [router]);
+    window.location.href = "/dashboard";
+  }, []);
 
   const signup = useCallback(async (data: SignupRequest) => {
     const response = await authApi.signup(data);
@@ -163,8 +161,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       isLoading: false,
     });
 
-    router.push("/dashboard");
-  }, [router]);
+    window.location.href = "/dashboard";
+  }, []);
 
   const logout = useCallback(async () => {
     try {
@@ -178,9 +176,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         isAuthenticated: false,
         isLoading: false,
       });
-      router.push("/auth/login");
+      window.location.href = "/auth/login";
     }
-  }, [router]);
+  }, []);
 
   const forgotPassword = useCallback(async (data: ForgotPasswordRequest) => {
     await authApi.forgotPassword(data);
