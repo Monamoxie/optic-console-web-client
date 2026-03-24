@@ -91,27 +91,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const initAuth = async () => {
       const token = getToken();
-      const storedUser = getStoredUser();
 
-      if (token && storedUser) {
-        // Validate token by fetching current user
-        try {
-          const user = await authApi.getMe();
-          setState({
-            user,
-            isAuthenticated: true,
-            isLoading: false,
-          });
-        } catch {
-          // Token invalid, clear storage
-          clearAuth();
-          setState({
-            user: null,
-            isAuthenticated: false,
-            isLoading: false,
-          });
-        }
-      } else {
+      if (!token) {
+        setState({
+          user: null,
+          isAuthenticated: false,
+          isLoading: false,
+        });
+        return;
+      }
+
+      try {
+        const user = await authApi.getMe();
+        setState({
+          user,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+      } catch {
+        clearAuth();
         setState({
           user: null,
           isAuthenticated: false,

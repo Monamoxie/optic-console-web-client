@@ -33,9 +33,11 @@ async function request<T>(
   }
 
   // Get auth token from storage
-  const token = typeof window !== "undefined" 
-    ? localStorage.getItem("optic-auth-token") 
-    : null;
+  const token =
+    typeof window !== "undefined"
+      ? localStorage.getItem("optic-auth-token") ||
+        sessionStorage.getItem("optic-auth-token")
+      : null;
 
   // Set default headers
   const headers: HeadersInit = {
@@ -61,6 +63,25 @@ async function request<T>(
     } catch {
       errorData = null;
     }
+
+    // Central auth handling: 401 = unauthenticated => clear auth + redirect to login.
+    if (typeof window !== "undefined" && response.status === 401) {
+      try {
+        localStorage.removeItem("optic-auth-token");
+        localStorage.removeItem("optic-refresh-token");
+        localStorage.removeItem("optic-user");
+        localStorage.removeItem("optic-remember");
+        sessionStorage.removeItem("optic-auth-token");
+        sessionStorage.removeItem("optic-refresh-token");
+        sessionStorage.removeItem("optic-user");
+      } finally {
+        // Full reload to login page
+        if (!window.location.pathname.startsWith("/auth")) {
+          window.location.href = "/auth/login";
+        }
+      }
+    }
+
     throw new ApiError(response.status, response.statusText, errorData);
   }
 
